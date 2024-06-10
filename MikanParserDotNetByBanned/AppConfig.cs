@@ -2,6 +2,7 @@
 {
     internal static class AppConfig
     {
+        public static readonly List<string>               TitleParserRegexList;
         public static readonly List<string>               UnnecessaryStringList;
         public static readonly Dictionary<string, string> DefaultTitleReplaceDictionary;
         public static readonly Dictionary<string, string> BangumiApiHeader;
@@ -9,6 +10,14 @@
 
         static AppConfig()
         {
+            TitleParserRegexList = new List<string>
+            {
+                @"(.*) - (\d{1,4}(?!\d|p)|\d{1,4}\.\d{1,2}(?!\d|p))(v\d{1,2})?(?: )?(?:END)?(.*)",
+                @"(.*)[\[\ E](\d{1,4}|\d{1,4}\.\d{1,2})(v\d{1,2})?(?: )?(?:END)?[\]\ ](.*)",
+                @"(.*)\[(?:第)?(\d+|\d+\.\d+)[话集話](v\d{1,2})?(?:END)?\](.*)",
+                @"(.*)第?(\d+|\d+\.\d+)[话話集](v\d{1,2})?(?:END)?(.*)",
+                @"(.*)(?:S\d{2})?EP?(\d+)(v\d{1,2})?(.*)"
+            };
             UnnecessaryStringList = new List<string>
             {
                 @"★\d{2}月新番★",

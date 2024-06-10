@@ -16,7 +16,7 @@ namespace MikanParserDotNetByBanned
             }
 
             var b      = a.Item2;
-            var result = RssMikanParser.GetHomeUrlFromEpisodePageHtml(b);
+            var result = RssMikanParsers.GetHomeUrlFromEpisodePageHtml(b);
             Console.WriteLine(result.Item2);
 
             if (!result.Item1)
@@ -32,7 +32,7 @@ namespace MikanParserDotNetByBanned
             }
 
             b      = a.Item2;
-            result = RssMikanParser.GetBangumiUrlFromHomePageHtml(b);
+            result = RssMikanParsers.GetBangumiUrlFromHomePageHtml(b);
             Console.WriteLine(result.Item2);
             /*
                 {

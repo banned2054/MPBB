@@ -6,7 +6,7 @@ using AngleSharp.Dom;
 
 namespace MikanParserDotNetByBanned.utils.parsers
 {
-    internal class RssMikanParser
+    internal class RssMikanParsers
     {
         private const string Pattern = @"bangumiId=(\d+)&subgroupid=(\d+)";
 
