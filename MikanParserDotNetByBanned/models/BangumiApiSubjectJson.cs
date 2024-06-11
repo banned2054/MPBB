@@ -4,7 +4,7 @@ namespace MikanParserDotNetByBanned.models
 {
     internal class BangumiApiSubjectJson
     {
-        [JsonPropertyName("date")] public string ? Date { get; set; }
+        [JsonPropertyName("pub_date")] public string ? Date { get; set; }
 
         [JsonPropertyName("platform")] public string ? Platform { get; set; }
 
@@ -24,7 +24,7 @@ namespace MikanParserDotNetByBanned.models
 
         [JsonPropertyName("total_episodes")] public int TotalEpisodes { get; set; }
 
-        [JsonPropertyName("id")] public int Id { get; set; }
+        [JsonPropertyName("subject_id")] public int Id { get; set; }
 
         [JsonPropertyName("eps")] public int Eps { get; set; }
 

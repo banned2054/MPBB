@@ -27,7 +27,7 @@
                 @"\[\d{1}月新番\]",
                 @"\[国漫\]",
                 @"\[个人制作合集\]",
-                @"\[[^\[\]]*招募[^\[\]]*\]"
+                @"\[[^\[\]]*招募[^\[\]]*\]",
             };
             DefaultTitleReplaceDictionary = new Dictionary<string, string>
             {

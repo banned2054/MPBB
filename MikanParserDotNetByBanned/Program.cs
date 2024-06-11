@@ -7,37 +7,18 @@ namespace MikanParserDotNetByBanned
     {
         static void Main(string[] args)
         {
-            var a = NetUtils.Fetch("https://mikanani.me/Home/Episode/23e1b6b1f12493407ba0174436915110bfa28725", 5)
-                            .Result;
-            if (!a.Item1)
+            var a = FileUtils.ReadFile("C:\\Code\\Python\\StringTemp\\1.txt");
+            if (!a.Item1) return;
+            var b = a.Item2.Split("\n");
+            foreach (var bb in b)
             {
-                Console.WriteLine(a.Item2);
-                return;
+                var c = TitleParsers.GetTitle(bb);
             }
 
-            var b      = a.Item2;
-            var result = RssMikanParsers.GetHomeUrlFromEpisodePageHtml(b);
-            Console.WriteLine(result.Item2);
-
-            if (!result.Item1)
-            {
-                return;
-            }
-
-            a = NetUtils.Fetch(result.Item2, 5).Result;
-            if (!a.Item1)
-            {
-                Console.WriteLine(a.Item2);
-                return;
-            }
-
-            b      = a.Item2;
-            result = RssMikanParsers.GetBangumiUrlFromHomePageHtml(b);
-            Console.WriteLine(result.Item2);
             /*
                 {
                     // 启动数据刷新线程
-                    Thread threadA = new(new ThreadStart(RefreshDataA));
+                    Thread threadA = new(new ThreadStart(RefreshRss));
                     threadA.Start();
                     Thread threadB = new(new ThreadStart(RefreshDataB));
                     threadB.Start();
@@ -45,7 +26,7 @@ namespace MikanParserDotNetByBanned
                 */
         }
 
-        private static void RefreshDataA()
+        private static void RefreshRss()
         {
             while (true)
             {
