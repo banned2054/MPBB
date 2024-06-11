@@ -4,7 +4,7 @@ namespace MikanParserDotNetByBanned.models
 {
     internal class BangumiApiSubjectJson
     {
-        [JsonPropertyName("pub_date")] public string ? Date { get; set; }
+        [JsonPropertyName("date")] public string ? Date { get; set; }
 
         [JsonPropertyName("platform")] public string ? Platform { get; set; }
 
@@ -24,11 +24,13 @@ namespace MikanParserDotNetByBanned.models
 
         [JsonPropertyName("total_episodes")] public int TotalEpisodes { get; set; }
 
-        [JsonPropertyName("subject_id")] public int Id { get; set; }
+        [JsonPropertyName("id")] public int Id { get; set; }
 
         [JsonPropertyName("eps")] public int Eps { get; set; }
 
         [JsonPropertyName("type")] public int Type { get; set; }
+
+        [JsonPropertyName("collection")] public Collection ? Collection { get; set; }
     }
 
     internal class Images
@@ -69,8 +71,21 @@ namespace MikanParserDotNetByBanned.models
         [JsonPropertyName("score")] public double Score { get; set; }
     }
 
+    internal class Collection
+    {
+        [JsonPropertyName("on_hold")] public int OnHold { get; set; }
+
+        [JsonPropertyName("dropped")] public int Dropped { get; set; }
+
+        [JsonPropertyName("wish")] public int Wish { get; set; }
+
+        [JsonPropertyName("collect")] public int Collect { get; set; }
+
+        [JsonPropertyName("doing")] public int Doing { get; set; }
+    }
+
     public class Alias
     {
-        [JsonPropertyName("v")] public string? V { get; set; }
+        [JsonPropertyName("v")] public string ? V { get; set; }
     }
 }

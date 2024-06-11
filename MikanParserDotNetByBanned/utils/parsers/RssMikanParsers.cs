@@ -10,9 +10,9 @@ namespace MikanParserDotNetByBanned.utils.parsers
     {
         private const string Pattern = @"bangumiId=(\d+)&subgroupid=(\d+)";
 
-        public static List<RssItemInfo> GetMikanIemInfoFromRssXml(string xmlText)
+        public static List<RssItem> GetMikanIemInfoFromRssXml(string xmlText)
         {
-            var rssItemInfoList = new List<RssItemInfo>();
+            var rssItemInfoList = new List<RssItem>();
 
             var parser   = new XmlParser();
             var document = parser.ParseDocument(xmlText);
@@ -26,7 +26,7 @@ namespace MikanParserDotNetByBanned.utils.parsers
             return rssItemInfoList;
         }
 
-        private static RssItemInfo GetItemInfoFromOneIElement(IParentNode item)
+        private static RssItem GetItemInfoFromOneIElement(IParentNode item)
         {
             var titleItem     = item.QuerySelector("title");
             var linkItem      = item.QuerySelector("link");
@@ -47,7 +47,7 @@ namespace MikanParserDotNetByBanned.utils.parsers
             title   = StringUtils.ReplaceUnnecessaryStr(title);
             sizeStr = CountUtils.ConvertByteLongToByte(size);
 
-            var newRssItemInfo = new RssItemInfo()
+            var newRssItemInfo = new RssItem()
             {
                 Title       = title,
                 Link        = link,

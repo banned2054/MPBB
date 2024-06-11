@@ -21,14 +21,16 @@ namespace MikanParserDotNetByBanned.utils.converter
                             infobox.Key = reader.GetString();
                             break;
                         case "value":
-                            if (reader.TokenType == JsonTokenType.StartArray)
+                            infobox.Value = reader.TokenType switch
                             {
-                                infobox.Value = JsonSerializer.Deserialize<List<Alias>>(ref reader, options);
-                            }
-                            else
-                            {
-                                infobox.Value = reader.GetString();
-                            }
+                                JsonTokenType.StartArray =>
+                                    JsonSerializer.Deserialize<List<Alias>>(ref reader, options),
+                                JsonTokenType.String => reader.GetString(),
+                                JsonTokenType.Number => reader.GetInt32(),
+                                JsonTokenType.StartObject =>
+                                    JsonSerializer.Deserialize<Dictionary<string, object>>(ref reader, options),
+                                _ => infobox.Value
+                            };
 
                             break;
                     }
@@ -43,13 +45,24 @@ namespace MikanParserDotNetByBanned.utils.converter
             writer.WriteStartObject();
             writer.WriteString("key", value.Key);
             writer.WritePropertyName("value");
-            if (value.Value is List<Alias> aliases)
+
+            switch (value.Value)
             {
-                JsonSerializer.Serialize(writer, aliases, options);
-            }
-            else
-            {
-                writer.WriteStringValue(value.Value!.ToString());
+                case List<Alias> aliases:
+                    JsonSerializer.Serialize(writer, aliases, options);
+                    break;
+                case string stringValue:
+                    writer.WriteStringValue(stringValue);
+                    break;
+                case int intValue:
+                    writer.WriteNumberValue(intValue);
+                    break;
+                case Dictionary<string, object> dictValue:
+                    JsonSerializer.Serialize(writer, dictValue, options);
+                    break;
+                default:
+                    writer.WriteNullValue();
+                    break;
             }
 
             writer.WriteEndObject();

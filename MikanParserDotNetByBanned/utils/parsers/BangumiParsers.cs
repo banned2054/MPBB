@@ -21,8 +21,8 @@ namespace MikanParserDotNetByBanned.utils.parsers
             var result = new BangumiInfo()
             {
                 CnName       = apiJson!.NameCn!,
-                OriginalName = apiJson.Name!,
-                Id           = apiJson.Id,
+                OriginName = apiJson.Name!,
+                SubjectId           = apiJson.Id,
                 Date         = DateTime.ParseExact(apiJson.Date!, Formats, CultureInfo.InvariantCulture)
             };
 

@@ -7,13 +7,10 @@ namespace MikanParserDotNetByBanned
     {
         static void Main(string[] args)
         {
-            var a = FileUtils.ReadFile("C:\\Code\\Python\\StringTemp\\1.txt");
+            var a = BangumiNetUtils.FetchSubjectById(313852);
             if (!a.Item1) return;
-            var b = a.Item2.Split("\n");
-            foreach (var bb in b)
-            {
-                var c = TitleParsers.GetTitle(bb);
-            }
+            var b = BangumiParsers.GetBangumiInfoFromJson(a.Item2);
+            Console.WriteLine(b);
 
             /*
                 {
