@@ -4,7 +4,7 @@ namespace MikanParserDotNetByBanned.models.sql
 {
     internal class RssContext : DbContext
     {
-        public DbSet<RssItemInfo> RssItems { get; set; }
+        public DbSet<RssItem> RssItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -15,7 +15,7 @@ namespace MikanParserDotNetByBanned.models.sql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<RssItemInfo>().ToTable("RssItemInfoTable").HasKey(r => r.Id);
+            modelBuilder.Entity<RssItem>().ToTable("RssItemInfoTable").HasKey(r => r.Id);
         }
     }
 }
