@@ -1,6 +1,6 @@
 ﻿namespace MikanParserDotNetByBanned.models
 {
-    internal class RssInfo
+    internal class RssInfoSingleFile
     {
         public int                 SubjectId      { get; set; }
         public string              OriginTitle    { get; set; } = string.Empty;
