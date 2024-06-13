@@ -10,6 +10,7 @@ namespace MikanParserDotNetByBanned.utils.parsers
         {
             originText = StringUtils.DefaultTitleReplace(originText);
             originText = StringUtils.ReplaceUnnecessaryStr(originText);
+            Console.WriteLine(originText);
             foreach (var nowRegexRule in AppConfig.TitleParserRegexList)
             {
                 var matchObj = Regex.Match(originText, nowRegexRule, RegexOptions.IgnoreCase);
@@ -28,9 +29,15 @@ namespace MikanParserDotNetByBanned.utils.parsers
                                                     .Where(s => !string.IsNullOrEmpty(s)) // 再次过滤掉可能的空字符串
                                                     .ToList();
 
-                if (nonEmptyStringList.Count <= 1) originText = nonEmptyStringList[0];
-                else originText                               = nonEmptyStringList[1];
-                Console.WriteLine(originText);
+                if (nonEmptyStringList.Count <= 1)
+                {
+                    originText = nonEmptyStringList[0];
+                }
+                else
+                {
+                    originText = nonEmptyStringList[1];
+                }
+
                 return (true, originText);
             }
 
