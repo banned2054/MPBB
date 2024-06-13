@@ -18,7 +18,9 @@ namespace MikanParserDotNetByBanned
             {
                 var d = TitleParsers.GetTitle(c.Trim());
                 if (!d.Item1) continue;
-                Console.WriteLine('\t' + d.Item2);
+                var e = TitleParsers.GetEpisodeRange(c.Trim());
+                if (e.Item2 > 0) Console.WriteLine($"\t{d.Item2} E{e.Item1:d2}-{e.Item2:d2}");
+                else Console.WriteLine($"\t{d.Item2} E{e.Item1:d2}");
             }
             /*
                 {

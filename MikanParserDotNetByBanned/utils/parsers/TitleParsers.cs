@@ -43,5 +43,29 @@ namespace MikanParserDotNetByBanned.utils.parsers
 
             return (false, originText);
         }
+
+        public static (int, int) GetEpisodeRange(string input)
+        {
+            foreach (var pattern in AppConfig.TitleParserRegexList)
+            {
+                var match = Regex.Match(input, pattern);
+                if (!match.Success) continue;
+                var episodeString = match.Groups[2].Value;
+                if (episodeString.Contains("-"))
+                {
+                    var parts = episodeString.Split('-');
+                    if (int.TryParse(parts[0], out var startEpisode) && int.TryParse(parts[1], out var endEpisode))
+                    {
+                        return (startEpisode, endEpisode);
+                    }
+                }
+                else if (int.TryParse(episodeString, out var singleEpisode))
+                {
+                    return (singleEpisode, -1);
+                }
+            }
+
+            return (-1, -1); // 如果没有匹配到，返回(-1, -1)
+        }
     }
 }
