@@ -15,7 +15,23 @@ namespace MikanParserDotNetByBanned.models.sql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BangumiInfo>().ToTable("BangumiInfoTable").HasKey(b => b.SubjectId);
+            modelBuilder.Entity<BangumiInfo>(entity =>
+            {
+                entity.ToTable("BangumiInfoTable");
+                entity.HasKey(e => e.SubjectId);
+                entity.Property(e => e.Platform).HasColumnName("platform");
+                entity.Property(e => e.OriginName).HasColumnName("origin_name");
+                entity.Property(e => e.CnName).HasColumnName("cn_name");
+                entity.Property(e => e.Pubdate).HasColumnName("pubdate");
+                entity.Property(e => e.Platform).HasColumnName("platform");
+                entity.Property(e => e.Summary).HasColumnName("summary");
+                entity.Property(e => e.RatingScore).HasColumnName("rating_score");
+                entity.Property(e => e.TotalEpisodes).HasColumnName("total_episodes");
+                entity.Property(e => e.Episode).HasColumnName("episode");
+                entity.Property(e => e.SmallImageUrl).HasColumnName("small_image_url");
+                entity.Property(e => e.ImageUrl).HasColumnName("image_url");
+            });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

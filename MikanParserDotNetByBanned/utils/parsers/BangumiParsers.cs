@@ -23,7 +23,7 @@ namespace MikanParserDotNetByBanned.utils.parsers
                 CnName       = apiJson!.NameCn!,
                 OriginName = apiJson.Name!,
                 SubjectId           = apiJson.Id,
-                Date         = DateTime.ParseExact(apiJson.Date!, Formats, CultureInfo.InvariantCulture)
+                Pubdate         = DateTime.ParseExact(apiJson.Date!, Formats, CultureInfo.InvariantCulture)
             };
 
 

@@ -1,6 +1,4 @@
-﻿using System.Data.SQLite;
-
-namespace MikanParserDotNetByBanned.models.sql
+﻿namespace MikanParserDotNetByBanned.models.sql
 {
     internal class BangumiInfoSqlManager
     {
@@ -12,13 +10,13 @@ namespace MikanParserDotNetByBanned.models.sql
             Context.Database.EnsureCreated();
         }
 
-        public static void AddBangumi(BangumiInfo ? bangumi)
+        public static void AddBangumi(BangumiInfo bangumi)
         {
             Context.BangumiInfos.Add(bangumi);
             Context.SaveChanges();
         }
 
-        public static BangumiInfo ? GetBangumi(int subjectId)
+        public static BangumiInfo ? GetBangumiById(int subjectId)
         {
             return Context.BangumiInfos.FirstOrDefault(b => b.SubjectId == subjectId);
         }
@@ -29,12 +27,12 @@ namespace MikanParserDotNetByBanned.models.sql
             if (bangumi == null) return;
             bangumi.OriginName    = updatedBangumi.OriginName;
             bangumi.CnName        = updatedBangumi.CnName;
-            bangumi.Date          = updatedBangumi.Date;
+            bangumi.Pubdate       = updatedBangumi.Pubdate;
             bangumi.Platform      = updatedBangumi.Platform;
             bangumi.Summary       = updatedBangumi.Summary;
             bangumi.RatingScore   = updatedBangumi.RatingScore;
             bangumi.TotalEpisodes = updatedBangumi.TotalEpisodes;
-            bangumi.Eps           = updatedBangumi.Eps;
+            bangumi.Episode       = updatedBangumi.Episode;
             bangumi.SmallImageUrl = updatedBangumi.SmallImageUrl;
             bangumi.ImageUrl      = updatedBangumi.ImageUrl;
             Context.SaveChanges();

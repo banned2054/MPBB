@@ -10,23 +10,23 @@
             Context.Database.EnsureCreated();
         }
 
-        public static void AddRssInfo(RssInfo ? rssInfo)
+        public static void AddRssInfo(RssInfo rssInfo)
         {
-            if (rssInfo == null) return;
             Context.RssContexts.Add(rssInfo);
             Context.SaveChanges();
         }
 
-        public static RssInfo ? GetRssInfo(int subjectId)
+        public static RssInfo ? GetRssInfo(string url)
         {
-            return Context.RssContexts.FirstOrDefault(r => r.SubjectId == subjectId);
+            return Context.RssContexts.FirstOrDefault(r => r.Url == url);
         }
 
-        public static void UpdateRssInfo(int subjectId, RssInfo updatedRssInfo)
+        public static void UpdateRssInfo(string url, RssInfo updatedRssInfo)
         {
-            var rssInfo = Context.RssContexts.FirstOrDefault(r => r.SubjectId == subjectId);
+            var rssInfo = Context.RssContexts.FirstOrDefault(r => r.Url == url);
             if (rssInfo == null) return;
 
+            rssInfo.SubjectId          = updatedRssInfo.SubjectId;
             rssInfo.OriginTitle        = updatedRssInfo.OriginTitle;
             rssInfo.AnalysisAnimeTitle = updatedRssInfo.AnalysisAnimeTitle;
             rssInfo.PubDate            = updatedRssInfo.PubDate;
