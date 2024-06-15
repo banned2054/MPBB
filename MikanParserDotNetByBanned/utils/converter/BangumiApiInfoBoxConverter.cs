@@ -21,17 +21,7 @@ namespace MikanParserDotNetByBanned.utils.converter
                             infobox.Key = reader.GetString();
                             break;
                         case "value":
-                            infobox.Value = reader.TokenType switch
-                            {
-                                JsonTokenType.StartArray =>
-                                    JsonSerializer.Deserialize<List<Alias>>(ref reader, options),
-                                JsonTokenType.String => reader.GetString(),
-                                JsonTokenType.Number => reader.GetInt32(),
-                                JsonTokenType.StartObject =>
-                                    JsonSerializer.Deserialize<Dictionary<string, object>>(ref reader, options),
-                                _ => infobox.Value
-                            };
-
+                            infobox.Value = ReadValue(ref reader, options);
                             break;
                     }
                 }
@@ -39,6 +29,20 @@ namespace MikanParserDotNetByBanned.utils.converter
 
             return infobox;
         }
+
+        private object ? ReadValue(ref Utf8JsonReader reader, JsonSerializerOptions options)
+        {
+            return reader.TokenType switch
+            {
+                JsonTokenType.StartArray => JsonSerializer.Deserialize<List<Alias>>(ref reader, options),
+                JsonTokenType.String     => reader.GetString(),
+                JsonTokenType.Number     => reader.GetInt32(),
+                JsonTokenType.StartObject =>
+                    JsonSerializer.Deserialize<Dictionary<string, object>>(ref reader, options),
+                _ => null
+            };
+        }
+
 
         public override void Write(Utf8JsonWriter writer, InfoBox value, JsonSerializerOptions options)
         {
