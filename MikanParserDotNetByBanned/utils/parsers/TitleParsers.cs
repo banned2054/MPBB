@@ -11,7 +11,7 @@ namespace MikanParserDotNetByBanned.utils.parsers
             originText = StringUtils.DefaultTitleReplace(originText);
             originText = StringUtils.ReplaceUnnecessaryStr(originText);
             Console.WriteLine(originText);
-            foreach (var nowRegexRule in AppConfig.TitleParserRegexList)
+            foreach (var nowRegexRule in StaticConfig.TitleParserRegexList)
             {
                 var matchObj = Regex.Match(originText, nowRegexRule, RegexOptions.IgnoreCase);
                 if (!matchObj.Success || string.IsNullOrEmpty(matchObj.Groups[1].Value))
@@ -46,7 +46,7 @@ namespace MikanParserDotNetByBanned.utils.parsers
 
         public static (int, int) GetEpisodeRange(string input)
         {
-            foreach (var pattern in AppConfig.TitleParserRegexList)
+            foreach (var pattern in StaticConfig.TitleParserRegexList)
             {
                 var match = Regex.Match(input, pattern);
                 if (!match.Success) continue;

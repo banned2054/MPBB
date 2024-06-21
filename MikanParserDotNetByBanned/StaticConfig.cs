@@ -1,6 +1,6 @@
 ﻿namespace MikanParserDotNetByBanned
 {
-    internal static class AppConfig
+    internal static class StaticConfig
     {
         public static readonly List<string>               TitleParserRegexList;
         public static readonly List<string>               UnnecessaryStringList;
@@ -8,7 +8,8 @@
         public static readonly Dictionary<string, string> BangumiApiHeader;
         public static readonly Dictionary<string, string> BangumiApiHeaderWithoutAuthorization;
 
-        static AppConfig()
+
+        static StaticConfig()
         {
             TitleParserRegexList = new List<string>
             {
@@ -29,7 +30,8 @@
                 @"\[个人制作合集\]",
                 @"\[[^\[\]]*招募[^\[\]]*\]",
                 @"jibaketa合成&amp;二次压制",
-                @"amp;"
+                @"amp;",
+                @"\[BYRBT\]\."
             };
             DefaultTitleReplaceDictionary = new Dictionary<string, string>
             {

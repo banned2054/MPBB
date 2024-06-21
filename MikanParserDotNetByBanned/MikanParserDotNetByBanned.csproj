@@ -14,6 +14,7 @@
 		<PackageReference Include="AngleSharp.Xml" Version="1.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+		<PackageReference Include="QBittorrent.Client" Version="1.9.23349.1" />
 		<PackageReference Include="RestSharp" Version="111.2.0" />
 		<PackageReference Include="System.Data.SQLite" Version="1.0.118" />
 	</ItemGroup>

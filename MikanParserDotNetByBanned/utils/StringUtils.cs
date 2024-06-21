@@ -7,7 +7,7 @@ namespace MikanParserDotNetByBanned.utils
         public static string ReplaceUnnecessaryStr(string origin)
         {
             var result = origin;
-            foreach (var unnecessaryStr in AppConfig.UnnecessaryStringList)
+            foreach (var unnecessaryStr in StaticConfig.UnnecessaryStringList)
             {
                 result = Regex.Replace(result, unnecessaryStr, "");
             }
@@ -18,7 +18,7 @@ namespace MikanParserDotNetByBanned.utils
         public static string DefaultTitleReplace(string origin)
         {
             var result = origin;
-            foreach (var kvp in AppConfig.DefaultTitleReplaceDictionary)
+            foreach (var kvp in StaticConfig.DefaultTitleReplaceDictionary)
             {
                 result = result.Replace(kvp.Key, kvp.Value);
             }
