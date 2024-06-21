@@ -1,4 +1,4 @@
-﻿namespace MikanParserDotNetByBanned.utils
+﻿namespace MikanParserDotNetByBanned.utils.count
 {
     internal class TimeUtils
     {

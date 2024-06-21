@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace MikanParserDotNetByBanned.utils
+namespace MikanParserDotNetByBanned.utils.net
 {
     internal class BangumiNetUtils
     {

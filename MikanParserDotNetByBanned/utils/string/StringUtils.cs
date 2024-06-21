@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace MikanParserDotNetByBanned.utils
+namespace MikanParserDotNetByBanned.utils.@string
 {
     internal class StringUtils
     {

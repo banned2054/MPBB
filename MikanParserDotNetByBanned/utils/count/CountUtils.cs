@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace MikanParserDotNetByBanned.utils
+namespace MikanParserDotNetByBanned.utils.count
 {
     internal class CountUtils
     {

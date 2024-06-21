@@ -3,6 +3,7 @@ using AngleSharp.Xml.Parser;
 using MikanParserDotNetByBanned.models;
 using System.Text.RegularExpressions;
 using AngleSharp.Dom;
+using MikanParserDotNetByBanned.utils.count;
 
 namespace MikanParserDotNetByBanned.utils.parsers
 {
